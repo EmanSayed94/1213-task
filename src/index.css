@@ -1,16 +1,17 @@
-/* body {
+body {
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
 		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	box-sizing: border-box;
 }
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;
-} */
+}
 .customer-form {
 	width: 50%;
 	padding: 20px;
@@ -21,8 +22,52 @@ code {
 	display: flex;
 	justify-content: flex-end;
 }
+.item-form{
+	width:70%;
+	padding: 20px;
+	margin: 50px auto;
+	border: 1px solid rgb(224, 221, 221);
+}
+.item-img{
+	width: 100px;
+	height: 100px;
+	padding:10px;
+	cursor: pointer;
+}
+.color{
+	width:20px;
+	height: 20px;
+	padding:5px;
+	margin-right: 5px;
+}
+.color-row{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	/* justify-content: space-around; */
+}
+.brandDropdown-container{
+	display:flex;
+	justify-content: space-between;
+	width: 80%;
+	margin-top: 20px;
+}
+.brand-dropdown{
+	width:35%;
+}
+.addItem-button{
+	margin-top: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+/* margin:40px auto; */
+
+}
 @media (max-width: 760px) {
 	.customer-form {
 		width: 80%;
+	}
+	.item-form{
+		width: 90%;
 	}
 }
