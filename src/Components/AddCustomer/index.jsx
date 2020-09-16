@@ -1,9 +1,9 @@
 import React from "react";
-import { Row, Col, Button, Label, Input, FormGroup, Form } from "reactstrap";
+import { Row, Col, Button, Label, Input, FormGroup } from "reactstrap";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
 const AddCustomer = (props) => {
-	console.log(props.customer)
+
 	const {
 		inputHandler,
 		addCustomer,
