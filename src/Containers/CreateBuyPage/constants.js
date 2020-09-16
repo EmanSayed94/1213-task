@@ -1,5 +1,5 @@
 export const colors = [
-	{ color: "Dark Red", value: 1, hex: "#111" },
+	{ color: "DarkRed", value: 1, hex: "#111" },
 	{
 		color: "Red",
 		value: 0.9,

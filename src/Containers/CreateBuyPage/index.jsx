@@ -54,8 +54,14 @@ class CreateBuy extends Component {
 		this.setState({ item });
 	};
 	AddItemHandler = () => {
-        const item = { ...this.state.item };
-        console.log(item)
+		let item = { ...this.state.item };
+		const { itemValue, colorValue, brandPrice } = item;
+		const retailPrice = itemValue * colorValue * brandPrice;
+		const buyPrice = 0.5 * retailPrice;
+		const tradePrice = (1 / 3) * retailPrice;
+		item = { ...item, retailPrice, buyPrice, tradePrice };
+
+		console.log(item);
 	};
 	render() {
 		const { brands, colors, selectedBrand } = this.state;

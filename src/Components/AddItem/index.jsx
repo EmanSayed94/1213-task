@@ -13,7 +13,7 @@ const AddItem = (props) => {
 		selectedColor,
 		AddItemHandler
 	} = props;
-	console.log(brands);
+
 	const getBrandName = () => {
 		const brand = brands.find(({ type }) => type === selectedBrandValue);
 		return (
@@ -67,7 +67,7 @@ const AddItem = (props) => {
 						key={color.color}
 						className="color"
 						onClick={() => setColor(color)}
-						style={{ backgroundColor: color.color, marginRight: "10px" }}
+						style={{ backgroundColor: color.color, marginLeft: "10px" }}
 					></div>
 				))}
 				<div />
