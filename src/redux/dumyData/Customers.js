@@ -4,7 +4,6 @@ export  const customers=[
         firstName: "Eman",
         lastName: "ELsayed",
         email: "emma@yahoo.com",
-        address:"20 faisal street",
         country: "Germany",
         street: "20 eltahrir street",
         postalCode:8000,
@@ -12,25 +11,14 @@ export  const customers=[
         buys:[]
     }, {
         id:2,
-        firstName: "7oda",
-        lastName: "sayed",
+        firstName: "Aya",
+        lastName: "Mohamed",
         email: "ddd@kkk.com",
-        address:"20 faisal street",
-        country: "Germany",
+        country: "Egypt",
         street: "fff",
         postalCode:"77",
         region: "Berlin",
         buys:[]
-    }, {
-        id:3,
-        firstName: "",
-        lastName: "",
-        email: "",
-        country: "Germany",
-        street: "",
-        postalCode:"",
-        region: "Berlin",
-        Buys:[]
-    }			
+    }		
     
 ]

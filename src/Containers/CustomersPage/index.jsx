@@ -55,7 +55,6 @@ class CustomerPage extends Component {
 		
 	};
 	render() {
-		console.log(this.props.customersList);
 		const {
 			inputHandler,
 			addCustomerHandler,
@@ -65,7 +64,6 @@ class CustomerPage extends Component {
 			createBuyHandler,
 		} = this;
 		const { newCustomer } = this.state;
-		// console.log(country)
 		return (
 			<React.Fragment>
 				<AddCustomer
