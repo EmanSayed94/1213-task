@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import AddItem from "../../Components/AddItem";
+import ItemsTable from "../../Components/ItemsTable";
 import { brands, colors } from "./constants";
-import { ADD_ITEM } from "../../redux/actionTypes";
+import { ADD_ITEM, GET_CUSTOMER_BY_ID } from "../../redux/actionTypes";
 import { GET_ITEM_BY_USER_ID } from "./../../redux/actionTypes";
 
 class CreateBuy extends Component {
@@ -25,7 +26,8 @@ class CreateBuy extends Component {
 	componentDidMount = () => {
 		const userId = +this.props.match.params.id;
 		const item = { ...this.state.item, userId };
-		 this.props.getItemsByUserId(userId);
+		this.props.getCustomer(userId);
+		this.props.getItemsByUserId(userId);
 		this.setState({ item });
 	};
 	typeHandler = (e) => {
@@ -59,6 +61,7 @@ class CreateBuy extends Component {
 
 		this.setState({ item });
 	};
+
 	AddItemHandler = () => {
 		let item = { ...this.state.item };
 		const { itemValue, colorValue, brandPrice } = item;
@@ -68,24 +71,33 @@ class CreateBuy extends Component {
 		item = { ...item, retailPrice, buyPrice, tradePrice };
 
 		this.props.addNewItem(item);
-        this.props.getItemsByUserId(item.userId);
-        console.log(this.props.userItems);
+		this.props.getItemsByUserId(item.userId);
+		console.log(this.props.userItems);
 	};
 	render() {
-		const { brands, colors, selectedBrand } = this.state;
+        const { brands, colors, selectedBrand } = this.state;
+        const {customer}=this.props;
 		// console.log(this.props.userItems);
 		return (
-			<AddItem
-				brands={brands}
-				colors={colors}
-				selectedBrandValue={selectedBrand}
-				selectBrandHandler={this.selectBrandHandler}
-				itemTypeHandler={this.typeHandler}
-				setColor={this.setColor}
-				BrandTypeHandler={this.BrandTypeHandler}
-				selectedColor={this.state.item.color}
-				AddItemHandler={this.AddItemHandler}
-			/>
+			<React.Fragment>
+				<div className="customer-info">
+					<div>{customer.firstName+" "+customer.lastName}</div>
+					<div>{customer.email}</div>
+					<div>{customer.street}</div>
+				</div>
+				<AddItem
+					brands={brands}
+					colors={colors}
+					selectedBrandValue={selectedBrand}
+					selectBrandHandler={this.selectBrandHandler}
+					itemTypeHandler={this.typeHandler}
+					setColor={this.setColor}
+					BrandTypeHandler={this.BrandTypeHandler}
+					selectedColor={this.state.item.color}
+					AddItemHandler={this.AddItemHandler}
+				/>
+				<ItemsTable items={this.props.userItems} />
+			</React.Fragment>
 		);
 	}
 }
@@ -97,11 +109,15 @@ const mapDisptchToProps = (dispatch) => {
 		getItemsByUserId: (id) => {
 			dispatch({ type: GET_ITEM_BY_USER_ID, payload: id });
 		},
+		getCustomer: (id) => {
+			dispatch({ type: GET_CUSTOMER_BY_ID, payload: id });
+		},
 	};
 };
 const mapStateToProps = (state) => {
 	return {
 		userItems: state.itemsReducer.userItems,
+		customer: state.customers.customer,
 	};
 };
 export default connect(mapStateToProps, mapDisptchToProps)(CreateBuy);

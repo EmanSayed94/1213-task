@@ -23,7 +23,7 @@ const CustomersTable = (props) => {
 					<tr key={customer.id}>
 						<th scope="row">{customer.firstName + " " + customer.lastName}</th>
 						<td>{customer.email}</td>
-						<td>{customer.address}</td>
+						<td>{customer.street}</td>
 						<td>{customer.postalCode}</td>
                 <td>{customer.region}</td>
 						<td>{customer.country}</td>
