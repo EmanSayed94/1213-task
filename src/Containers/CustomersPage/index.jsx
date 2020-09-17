@@ -51,7 +51,7 @@ class CustomerPage extends Component {
 		this.setState({ newCustomer });
 	};
 	createBuyHandler = (id) => {
-	this.props.history.replace(`/CreateBuy/${id}`);
+	this.props.history.push(`/CreateBuy/${id}`);
 		
 	};
 	render() {
@@ -69,7 +69,7 @@ class CustomerPage extends Component {
 				<AddCustomer
 					customer={newCustomer}
 					inputHandler={inputHandler}
-					addCustomer={addCustomerHandler}
+					addCustomerHandle={addCustomerHandler}
 					clearHandler={clearHandler}
 					selectCountry={selectCountry}
 					selectRegion={selectRegion}

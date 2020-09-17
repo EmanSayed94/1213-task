@@ -3,10 +3,9 @@ import { Row, Col, Button, Label, Input, FormGroup } from "reactstrap";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
 const AddCustomer = (props) => {
-
 	const {
 		inputHandler,
-		addCustomer,
+		addCustomerHandle,
 		selectCountry,
 		selectRegion,
 		clearHandler,
@@ -95,10 +94,10 @@ const AddCustomer = (props) => {
 						<Col md={9}>
 							<FormGroup>
 								<RegionDropdown
-								 country={country}
+									country={country}
 									value={region}
 									onChange={(val) => selectRegion(val)}
-									 className="form-control"
+									className="form-control"
 								/>
 							</FormGroup>
 						</Col>
@@ -109,7 +108,7 @@ const AddCustomer = (props) => {
 					<Button color="danger" className="mr-3" onClick={clearHandler}>
 						Clear
 					</Button>
-					<Button color="primary" onClick={addCustomer}>
+					<Button color="primary" onClick={addCustomerHandle}>
 						Add Customer
 					</Button>
 				</div>

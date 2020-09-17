@@ -4,6 +4,7 @@ import { Button } from "reactstrap";
 
 const CustomersTable = (props) => {
 	const { customers,createBuy } = props;
+
 	return (
 		<Table bordered style={{ marginTop: "30px" }}>
 			<thead>
@@ -31,7 +32,7 @@ const CustomersTable = (props) => {
 							<Button onClick={()=>createBuy(customer.id)}>Create</Button>
 						</td>
 						<td>
-							<Button>View</Button>
+							<Button onClick={()=>createBuy(customer.id)}>View</Button>
 						</td>
 					</tr>
 				))}
