@@ -1,10 +1,12 @@
 import React from "react";
 import { Table } from "reactstrap";
+import {formatCurrency}from'../../util'
 
-const ItemsTable = ({items}) => {
-	const formatCurrency=(num)=>{
-        return "€ " + Number(num.toFixed(2)).toLocaleString() + " ";
-      }
+const ItemsTable = ({items,tradeCheckHandler}) => {
+	// const formatCurrency=(num)=>{
+    //     return "€ " + Number(num.toFixed(2)).toLocaleString() + " ";
+	//   }
+	console.log(items)
 	return (
 		<Table bordered style={{ marginTop: "30px" }}>
 			<thead>
@@ -24,7 +26,7 @@ const ItemsTable = ({items}) => {
 			</thead>
 			<tbody>
 				{items.map((item, index) => (
-					<tr key={index}>
+					<tr key={item.id}>
 						<th scope="row">{item.itemType}</th>
 						<td>{item.itemValue}</td>
 						<td>{item.color}</td>
@@ -36,7 +38,7 @@ const ItemsTable = ({items}) => {
 						<td>{formatCurrency(item.buyPrice)}</td>
 						<td>{formatCurrency(item.tradePrice)}</td>
 						<td>
-							<input type="checkbox" />
+							<input type="checkbox" onChange={()=>tradeCheckHandler(item.id)} checked={item.checked}/>
 						</td>
 					</tr>
 				))}
