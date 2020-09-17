@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import AddItem from "../../Components/AddItem";
 import { brands, colors } from "./constants";
+import { ADD_ITEM } from "../../redux/actionTypes";
+import { GET_ITEM_BY_USER_ID } from "./../../redux/actionTypes";
+
 class CreateBuy extends Component {
 	state = {
 		item: {
@@ -9,9 +14,9 @@ class CreateBuy extends Component {
 			itemValue: "",
 			color: "",
 			colorValue: "",
-			brandType: "",
-			brandName: "",
-			brandPrice: "",
+			brandType: "Directional",
+			brandName: "A",
+			brandPrice: 50,
 		},
 		colors,
 		brands,
@@ -20,6 +25,7 @@ class CreateBuy extends Component {
 	componentDidMount = () => {
 		const userId = +this.props.match.params.id;
 		const item = { ...this.state.item, userId };
+		 this.props.getItemsByUserId(userId);
 		this.setState({ item });
 	};
 	typeHandler = (e) => {
@@ -61,11 +67,13 @@ class CreateBuy extends Component {
 		const tradePrice = (1 / 3) * retailPrice;
 		item = { ...item, retailPrice, buyPrice, tradePrice };
 
-		console.log(item);
+		this.props.addNewItem(item);
+        this.props.getItemsByUserId(item.userId);
+        console.log(this.props.userItems);
 	};
 	render() {
 		const { brands, colors, selectedBrand } = this.state;
-
+		// console.log(this.props.userItems);
 		return (
 			<AddItem
 				brands={brands}
@@ -81,5 +89,19 @@ class CreateBuy extends Component {
 		);
 	}
 }
-
-export default CreateBuy;
+const mapDisptchToProps = (dispatch) => {
+	return {
+		addNewItem: (newItem) => {
+			dispatch({ type: ADD_ITEM, payload: newItem });
+		},
+		getItemsByUserId: (id) => {
+			dispatch({ type: GET_ITEM_BY_USER_ID, payload: id });
+		},
+	};
+};
+const mapStateToProps = (state) => {
+	return {
+		userItems: state.itemsReducer.userItems,
+	};
+};
+export default connect(mapStateToProps, mapDisptchToProps)(CreateBuy);
