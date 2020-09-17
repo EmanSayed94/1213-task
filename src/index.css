@@ -29,8 +29,8 @@ code {
 	border: 1px solid rgb(224, 221, 221);
 }
 .item-img{
-	width: 100px;
-	height: 100px;
+	width: 80px;
+	height: 80px;
 	padding:10px;
 	cursor: pointer;
 }
@@ -63,11 +63,21 @@ code {
 /* margin:40px auto; */
 
 }
+.customer-info{
+	width:40%;
+	padding: 20px;
+	margin: 50px 13%;
+}
 @media (max-width: 760px) {
 	.customer-form {
 		width: 80%;
 	}
 	.item-form{
 		width: 90%;
+	}
+	.customer-info{
+		width:70%;
+		padding: 20px;
+		margin: 50px 0;
 	}
 }

@@ -1,3 +1,4 @@
 export const ADD_CUSTOMER="ADD_CUSTOMER";
 export const ADD_ITEM="ADD_CUSTOMER";
 export const GET_ITEM_BY_USER_ID="GET_ITEM_BY_USER_ID"
+export const GET_CUSTOMER_BY_ID="GET_CUSTOMER_BY_ID"
